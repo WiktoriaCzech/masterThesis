@@ -1,95 +1,83 @@
-import Image from "next/image";
+"use client";
+
+import { useMemo } from "react";
 import styles from "./page.module.css";
+import Card from "@/components/Card";
+import calculateTime from "@/utils/calculateTime";
+import useTimeDifference from "@/hooks/useTimeDifference";
+import dateToString from "@/utils/stringToDate";
 
 export default function Home() {
+  const issuedDate = useMemo(() => new Date("2025-01-08T06:34:30.000Z"), []);
+  const issuedDate2 = useMemo(() => new Date("2025-01-29T08:13:08.000Z"), []);
+  const completedDate = useMemo(() => new Date("2025-01-08T08:41:56.000Z"), []);
+  const comingServices = useMemo(
+    () => new Date("2024-09-17T00:00:00.000Z"),
+    []
+  );
+
+  const issuedDateInString = dateToString(issuedDate, "full");
+  const issuedDate2InString = dateToString(issuedDate2, "full");
+  const completedDateInString = dateToString(completedDate, "full");
+  const comingServicesInString = dateToString(comingServices, "date");
+
+  const timeDifference = useTimeDifference(issuedDate2);
+
+  const data = {
+    content: {
+      letter: "C",
+      name: "MBH2",
+      description: "Myjka Benteler",
+    },
+    details: {
+      maintainerNote: "Wymiana wody",
+      comingServiceDate: comingServicesInString,
+    },
+  };
+
+  const data2 = {
+    content: {
+      letter: "A",
+      name: "ManipulatorPVH2",
+      description: "Manipulator PV H2 (monodragon)",
+      issuedDate: issuedDateInString,
+      completedDate: completedDateInString,
+    },
+    details: {
+      serviceTime: calculateTime(issuedDate, completedDate),
+      category: "Diagnostyka / Naprawa",
+      maintainerNote: "Brak ciśnienia w układzie podawania",
+      maintainer: "Mariusz Kowalski",
+      priority: 3,
+    },
+  };
+
+  const data3 = {
+    content: {
+      letter: "F",
+      name: "Stringer Stringerownia",
+      issuedDate: issuedDate2InString,
+      description: "Stringer 2/S10",
+    },
+    details: {
+      serviceTime: timeDifference,
+      maintainerNote: "Wstążka nie trafia na pada celki",
+      maintainer: "Janusz Jankowski",
+      priority: 1,
+    },
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+        <Card
+          content={data.content}
+          details={data.details}
+          type="commingSoon"
         />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        <Card content={data2.content} details={data2.details} type="latest" />
+        <Card content={data3.content} details={data3.details} type="danger" />
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

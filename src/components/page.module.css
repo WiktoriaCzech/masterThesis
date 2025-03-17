@@ -1,0 +1,92 @@
+.cardWrapper {
+  background-color: #f7f7f7;
+  border-radius: 1.25rem;
+  border: 1px solid #f7f7f7;
+  border-left-width: 72px;
+  border-top: none;
+  border-bottom: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  padding: 24px 104px 24px 32px;
+  min-height: 216px;
+  position: relative;
+}
+
+.danger {
+  border-left-color: #fe4c4f;
+  color: #d70004;
+}
+
+.latest {
+  border-left-color: #7ea8c6;
+  color: #134b73;
+}
+
+.commingSoon {
+  border-left-color: #f3ad7c;
+  color: #f06400;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 50%;
+  flex: 1;
+}
+
+.sectorWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 30px;
+}
+
+.sectorWrapper > h1 {
+  padding-top: 0.2rem;
+  font-size: 2.4rem;
+}
+
+.rightSide {
+  margin-left: 24px;
+  padding-left: 24px;
+  border-style: solid;
+  border-width: 1px;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dangerPosition {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 8px;
+}
+
+.paddingBottom {
+  padding-bottom: 30px;
+}
+
+.leftSide > p {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
