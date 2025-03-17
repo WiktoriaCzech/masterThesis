@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import styles from "./page.module.css";
-import Card from "@/components/Card";
+import Card from "@/components/card/Card";
 import calculateTime from "@/utils/calculateTime";
 import useTimeDifference from "@/hooks/useTimeDifference";
 import dateToString from "@/utils/stringToDate";

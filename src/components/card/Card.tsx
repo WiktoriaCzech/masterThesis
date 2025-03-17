@@ -1,31 +1,14 @@
-import styles from "./page.module.css";
-import CompanyIconSVG from "../../public/svg/CompanyIconSVG";
-import WrenchSVG from "../../public/svg/WrenchSVG";
-import PersonSVG from "../../public/svg/PersonSVG";
-import CheckboxSVG from "../../public/svg/CheckboxSVG";
-import PenSVG from "../../public/svg/PenSVG";
-import CalendarSVG from "../../public/svg/CalendarSVG";
-import TimedWrenchSVG from "../../public/svg/TimedWrenchSVG";
-import DangerSVG from "../../public/svg/DangerSVG";
+import styles from "./Card.module.css";
+import CompanyIconSVG from "../../../public/svg/CompanyIconSVG";
+import WrenchSVG from "../../../public/svg/WrenchSVG";
+import PersonSVG from "../../../public/svg/PersonSVG";
+import CheckboxSVG from "../../../public/svg/CheckboxSVG";
+import PenSVG from "../../../public/svg/PenSVG";
+import CalendarSVG from "../../../public/svg/CalendarSVG";
+import TimedWrenchSVG from "../../../public/svg/TimedWrenchSVG";
+import DangerSVG from "../../../public/svg/DangerSVG";
+import { ICardProps } from "@/types";
 
-interface ICardProps {
-  content: {
-    letter: string;
-    name: string;
-    description: string;
-    issuedDate?: string;
-    completedDate?: string;
-  };
-  details: {
-    serviceTime?: string;
-    comingServiceDate?: string;
-    category?: string;
-    maintainerNote: string;
-    maintainer?: string;
-    priority?: number;
-  };
-  type: "danger" | "latest" | "commingSoon";
-}
 
 function Card({ content, details, type }: ICardProps) {
   const typeMapping = {
@@ -126,7 +109,9 @@ function Card({ content, details, type }: ICardProps) {
                   <b>{item.text}</b>
                 </p>
               ) : (
-                <p>{item.text}</p>
+                <p style={{
+                  paddingLeft: type === 'danger' ? '10px' : 0
+                }}>{item.text}</p>
               )}
             </div>
           ))}

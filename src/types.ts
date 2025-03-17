@@ -5,3 +5,23 @@ export interface IconSVGProps extends SVGProps<SVGSVGElement> {
   height?: number;
   color?: string;
 }
+
+
+export interface ICardProps {
+  content: {
+    letter: string;
+    name: string;
+    description: string;
+    issuedDate?: string;
+    completedDate?: string;
+  };
+  details: {
+    serviceTime?: string;
+    comingServiceDate?: string;
+    category?: string;
+    maintainerNote: string;
+    maintainer?: string;
+    priority?: number;
+  };
+  type: "danger" | "latest" | "commingSoon";
+}
