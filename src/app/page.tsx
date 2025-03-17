@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import styles from "./page.module.css";
 import Card from "@/components/card/Card";
+import Navbar from "@/components/navbar/Navbar";
 import calculateTime from "@/utils/calculateTime";
 import useTimeDifference from "@/hooks/useTimeDifference";
 import dateToString from "@/utils/stringToDate";
@@ -68,16 +69,19 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Card
-          content={data.content}
-          details={data.details}
-          type="commingSoon"
-        />
-        <Card content={data2.content} details={data2.details} type="latest" />
-        <Card content={data3.content} details={data3.details} type="danger" />
-      </main>
-    </div>
+    <>
+      <Navbar />
+      <div className={styles.page}>
+        <main className={styles.main}>
+          <Card
+            content={data.content}
+            details={data.details}
+            type="commingSoon"
+          />
+          <Card content={data2.content} details={data2.details} type="latest" />
+          <Card content={data3.content} details={data3.details} type="danger" />
+        </main>
+      </div>
+    </>
   );
 }

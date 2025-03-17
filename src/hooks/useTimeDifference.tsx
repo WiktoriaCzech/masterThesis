@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import calculateTime from "@/utils/calculateTime";
 
-export default function useTimeDifference(targetDate: Date) {
-  // Start with an empty string to avoid rendering a time difference that uses new Date() during SSR.
+export default function useTimeDifference(targetDate?: Date) {
+  // Start with an empty string to avoid rendering incorrect data during SSR.
   const [timeDifference, setTimeDifference] = useState<string>("");
 
   useEffect(() => {
@@ -10,12 +10,17 @@ export default function useTimeDifference(targetDate: Date) {
 
     function tick() {
       const now = new Date();
-      setTimeDifference(calculateTime(targetDate, now));
+
+      if (targetDate) {
+        setTimeDifference(calculateTime(targetDate, now)); 
+      } else {
+        setTimeDifference(now.toLocaleTimeString());
+      }
+
       const delay = 1000 - now.getMilliseconds();
       timer = setTimeout(tick, delay);
     }
 
-    // Start the ticking after mount
     tick();
 
     return () => clearTimeout(timer);
