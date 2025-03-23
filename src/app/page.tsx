@@ -16,11 +16,14 @@ export default function Home() {
         <li>Czy układ danych jest dla Ciebie intuicyjny?</li>
       </ul>
       <h3>
-        Następnie przejdź do nowej, ulepszonej wersji panelu operatorskiego klikając w przycisk &quot;Dalej&quot;.
-        Nowy widok jest interaktywny – możesz klikać w poszczególne elementy,
-        aby zobaczyć dodatkowe informacje lub działania.
+        Następnie przejdź do nowej, ulepszonej wersji panelu operatorskiego
+        klikając w przycisk &quot;Dalej&quot;. Nowy widok jest interaktywny –
+        możesz klikać w poszczególne elementy, aby zobaczyć dodatkowe informacje
+        lub działania.
       </h3>
-      <h3>Po zapoznaniu się z obydwoma wersjami panelu odpowiedz na pytania:</h3>
+      <h3>
+        Po zapoznaniu się z obydwoma wersjami panelu odpowiedz na pytania:
+      </h3>
       <ul className={styles.list}>
         <li>Czy nowy panel jest bardziej czytelny?</li>
         <li>Czy łatwiej jest Ci znaleźć potrzebne informacje?</li>

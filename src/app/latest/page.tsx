@@ -77,7 +77,6 @@ function LatestIncidents() {
         maintainer: "Amadeusz Mozart",
       },
     },
-  
   ];
 
   return (

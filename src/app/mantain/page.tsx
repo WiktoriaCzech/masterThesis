@@ -8,53 +8,63 @@ import dateToString from "@/utils/stringToDate";
 import { IExampleData } from "@/types";
 
 function MantainSchedules() {
-
   const exampleData: IExampleData[] = [
     {
-        content: {
-            letter: "C",
-            name: "MBH2",
-            description: "Myjka Benteler",
-          },
-          details: {
-            maintainerNote: "Wymiana wody",
-            comingServiceDate: dateToString(new Date("2025-04-27T06:34:30.000Z"), 'date'),
-          },
+      content: {
+        letter: "C",
+        name: "MBH2",
+        description: "Myjka Benteler",
+      },
+      details: {
+        maintainerNote: "Wymiana wody",
+        comingServiceDate: dateToString(
+          new Date("2025-04-27T06:34:30.000Z"),
+          "date"
+        ),
+      },
     },
     {
-        content: {
-            letter: "F",
-            name: "ManipulatorPVH2",
-            description: "Manipulator PV H2 (monodragon)",
-          },
-          details: {
-            maintainerNote: "Smarowanie łożysk",
-            comingServiceDate: dateToString(new Date("2025-05-12T06:34:30.000Z"), 'date'),
-          },
+      content: {
+        letter: "F",
+        name: "ManipulatorPVH2",
+        description: "Manipulator PV H2 (monodragon)",
+      },
+      details: {
+        maintainerNote: "Smarowanie łożysk",
+        comingServiceDate: dateToString(
+          new Date("2025-05-12T06:34:30.000Z"),
+          "date"
+        ),
+      },
     },
     {
-        content: {
-            letter: "D",
-            name: "PrasaPSIH6",
-            description: "Prasa ciśnieniowa H6",
-          },
-          details: {
-            maintainerNote: "Wymiana butli z Argonem",
-            comingServiceDate: dateToString(new Date("2025-09-15T06:34:30.000Z"), 'date'),
-          },
+      content: {
+        letter: "D",
+        name: "PrasaPSIH6",
+        description: "Prasa ciśnieniowa H6",
+      },
+      details: {
+        maintainerNote: "Wymiana butli z Argonem",
+        comingServiceDate: dateToString(
+          new Date("2025-09-15T06:34:30.000Z"),
+          "date"
+        ),
+      },
     },
     {
-        content: {
-            letter: "C",
-            name: "MBH2",
-            description: "Myjka Benteler",
-          },
-          details: {
-            maintainerNote: "Wymiana wody",
-            comingServiceDate: dateToString(new Date("2026-02-21T06:34:30.000Z"), 'date'),
-          },
+      content: {
+        letter: "C",
+        name: "MBH2",
+        description: "Myjka Benteler",
+      },
+      details: {
+        maintainerNote: "Wymiana wody",
+        comingServiceDate: dateToString(
+          new Date("2026-02-21T06:34:30.000Z"),
+          "date"
+        ),
+      },
     },
-   
   ];
 
   return (
