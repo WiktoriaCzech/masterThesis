@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo } from "react";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Card from "@/components/card/Card";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 import useTimeDifference from "@/hooks/useTimeDifference";
 import dateToString from "@/utils/stringToDate";
 import { IExampleData } from "@/types";
-import Navbar from "@/components/navbar/Navbar";
 
 function CurrentFaliure() {
   const issuedDate = useMemo(() => new Date("2025-03-01T06:19:28.000Z"), []);
@@ -78,6 +79,7 @@ function CurrentFaliure() {
           />
         ))}
       </section>
+      <Footer url="/questions" />
     </main>
   );
 }

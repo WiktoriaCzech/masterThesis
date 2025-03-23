@@ -1,8 +1,9 @@
 "use client";
 
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Navbar from "@/components/navbar/Navbar";
 import Card from "@/components/card/Card";
+import Footer from "@/components/footer/Footer";
 import dateToString from "@/utils/stringToDate";
 import { IExampleData } from "@/types";
 
@@ -76,6 +77,7 @@ function LatestIncidents() {
         maintainer: "Amadeusz Mozart",
       },
     },
+  
   ];
 
   return (
@@ -91,6 +93,7 @@ function LatestIncidents() {
           />
         ))}
       </section>
+      <Footer url="/questions" />
     </main>
   );
 }
