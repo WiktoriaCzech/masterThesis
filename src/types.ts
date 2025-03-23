@@ -25,3 +25,5 @@ export interface ICardProps {
   };
   type: "danger" | "latest" | "commingSoon";
 }
+
+export type IExampleData = Omit<ICardProps, 'type'>

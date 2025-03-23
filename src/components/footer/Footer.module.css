@@ -1,0 +1,38 @@
+.footerWrapper {
+    background-color: #f3f3f3;
+    margin-top: auto;
+    height: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    right: 2rem;
+    left: 2rem;
+    z-index: 10;
+  }
+  
+  .button {
+    background-color: #0071C5;
+    padding: 1rem 2.5rem;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: background-color 300ms ease-in-out;
+  
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button:hover {
+    background-color: #00589b;
+  }
+
+  .special {
+    border: none;
+    cursor: pointer;
+  }

@@ -29,7 +29,7 @@ export default function dateToString(
       const hours = pad(date.getHours());
       const minutes = pad(date.getMinutes());
       const seconds = pad(date.getSeconds());
-      return `${hours}:${minutes}:${seconds}`;
+      return `${hours}h : ${minutes}min : ${seconds}sek`;
     }
     default:
       return date.toString();

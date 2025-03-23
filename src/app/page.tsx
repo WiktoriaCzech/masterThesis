@@ -1,87 +1,49 @@
-"use client";
-
-import { useMemo } from "react";
+import Image from "next/image";
+import panel from "@/../public/panel_operatorski.png";
 import styles from "./page.module.css";
-import Card from "@/components/card/Card";
-import Navbar from "@/components/navbar/Navbar";
-import calculateTime from "@/utils/calculateTime";
-import useTimeDifference from "@/hooks/useTimeDifference";
-import dateToString from "@/utils/stringToDate";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
-  const issuedDate = useMemo(() => new Date("2025-01-08T06:34:30.000Z"), []);
-  const issuedDate2 = useMemo(() => new Date("2025-01-29T08:13:08.000Z"), []);
-  const completedDate = useMemo(() => new Date("2025-01-08T08:41:56.000Z"), []);
-  const comingServices = useMemo(
-    () => new Date("2024-09-17T00:00:00.000Z"),
-    []
-  );
-
-  const issuedDateInString = dateToString(issuedDate, "full");
-  const issuedDate2InString = dateToString(issuedDate2, "full");
-  const completedDateInString = dateToString(completedDate, "full");
-  const comingServicesInString = dateToString(comingServices, "date");
-
-  const timeDifference = useTimeDifference(issuedDate2);
-
-  const data = {
-    content: {
-      letter: "C",
-      name: "MBH2",
-      description: "Myjka Benteler",
-    },
-    details: {
-      maintainerNote: "Wymiana wody",
-      comingServiceDate: comingServicesInString,
-    },
-  };
-
-  const data2 = {
-    content: {
-      letter: "A",
-      name: "ManipulatorPVH2",
-      description: "Manipulator PV H2 (monodragon)",
-      issuedDate: issuedDateInString,
-      completedDate: completedDateInString,
-    },
-    details: {
-      serviceTime: calculateTime(issuedDate, completedDate),
-      category: "Diagnostyka / Naprawa",
-      maintainerNote: "Brak ciśnienia w układzie podawania",
-      maintainer: "Mariusz Kowalski",
-      priority: 3,
-    },
-  };
-
-  const data3 = {
-    content: {
-      letter: "F",
-      name: "Stringer Stringerownia",
-      issuedDate: issuedDate2InString,
-      description: "Stringer 2/S10",
-    },
-    details: {
-      serviceTime: timeDifference,
-      maintainerNote: "Wstążka nie trafia na pada celki",
-      maintainer: "Janusz Jankowski",
-      priority: 1,
-    },
-  };
-
   return (
-    <>
-      <Navbar />
-      <div className={styles.page}>
-        <main className={styles.main}>
-          <Card
-            content={data.content}
-            details={data.details}
-            type="commingSoon"
-          />
-          <Card content={data2.content} details={data2.details} type="latest" />
-          <Card content={data3.content} details={data3.details} type="danger" />
-        </main>
+    <main className={`${styles.main} ${styles.overrideMain}`}>
+      <h3>
+        Zapoznaj się z poniższym widokiem panelu operatorskiego. Przeanalizuj go
+        pod kątem sposobu prezentacji danych oraz przejrzystości wizualizacji.
+        Zastanów się:
+      </h3>
+      <ul className={styles.list}>
+        <li>Czy potrafisz szybko odnaleźć istotne informacje?</li>
+        <li>Czy układ danych jest dla Ciebie intuicyjny?</li>
+      </ul>
+      <h3>
+        Następnie przejdź do nowej, ulepszonej wersji panelu operatorskiego
+        klikając w przycisk &quot;Dalej&quot;. Nowy widok jest interaktywny –
+        możesz klikać w poszczególne elementy, aby zobaczyć dodatkowe informacje
+        lub działania.
+      </h3>
+      <h3>
+        Po zapoznaniu się z obydwoma wersjami panelu odpowiedz na pytania:
+      </h3>
+      <ul className={styles.list}>
+        <li>Czy nowy panel jest bardziej czytelny?</li>
+        <li>Czy łatwiej jest Ci znaleźć potrzebne informacje?</li>
+        <li>
+          Czy interaktywność wpływa pozytywnie na odbiór i obsługę panelu?
+        </li>
+      </ul>
+      <div className={styles.imageWrapper}>
+        <Image
+          src={panel}
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+          priority
+        />
       </div>
-    </>
+      <Footer url={"/current"} />
+    </main>
   );
 }
