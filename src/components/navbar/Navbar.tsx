@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import CalendarSVG from '../../../public/svg/CalendarSVG';
@@ -6,6 +9,7 @@ import InfoSVG from '../../../public/svg/InfoSVG';
 import WrenchSVG from '../../../public/svg/WrenchSVG';
 import useCurrentDate from '@/hooks/useCurrentDate';
 import useTimeDifference from '@/hooks/useTimeDifference';
+import ModalHelper from '../modal/modalHelper';
 
 
 function Navbar(){
@@ -19,7 +23,15 @@ function Navbar(){
     const time = useTimeDifference();
     const today = useCurrentDate();
 
+    const [showInfo, setShowInfo] = useState(false);
+
+    const handleInfoToggle = () => {
+        console.log('chuj')
+        setShowInfo(!showInfo);
+    }
+
     return(
+        <>
         <nav className={styles.navWrapper}>
             <div className={styles.buttonsWrapper}>
                 {buttonsData.map((button, index)=> (
@@ -28,7 +40,7 @@ function Navbar(){
                          <span>{button.text}</span>
                     </Link>
                 ))}
-                <button className={styles.button}>
+                <button className={styles.button} onClick={handleInfoToggle}>
                     <InfoSVG color='#000' width={30}/>
                 </button>
             </div>
@@ -37,6 +49,10 @@ function Navbar(){
                 <b>{today.toLocaleDateString()}</b>
             </div>
         </nav>
+        {showInfo && (
+            <ModalHelper onClose={handleInfoToggle} />
+        )}
+        </>
     )
 };
 
