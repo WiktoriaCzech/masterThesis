@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Clarity from "@microsoft/clarity";
 
-const projectId = process.env.NEXT_PUBLIC_CLARITY_ID || "";
+const projectId = "qtam58nfi9";
 
 Clarity.init(projectId);
 
