@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Clarity from "@microsoft/clarity";
+import ClarityClient from "./clarity";
 
-const projectId = "qtam58nfi9";
-
-Clarity.init(projectId);
+//const projectId = process.env.NEXT_PUBLIC_CLARITY_ID || "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ClarityClient projectId="qtam58nfi9" />
         {children}
       </body>
     </html>
