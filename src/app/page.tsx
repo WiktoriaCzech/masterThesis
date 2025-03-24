@@ -1,7 +1,7 @@
 import Image from "next/image";
-import panel from "@/../public/panel_operatorski.png";
-import styles from "./page.module.css";
 import Footer from "@/components/footer/Footer";
+import styles from "./page.module.css";
+import panel from "@/../public/panel_operatorski.png";
 
 export default function Home() {
   return (

@@ -4,9 +4,9 @@ import Footer from "@/components/footer/Footer";
 function Questions() {
   return (
     <main className={styles.main}>
-      <section className={styles.sectionWrapper}>
+      <section className={`${styles.sectionWrapper} ${styles.formOverride}`}>
         <h3>
-          Dziękujemy za zapoznanie się z obiema wersjami panelu operatorskiego.
+          Dziękuję za zapoznanie się z obiema wersjami panelu operatorskiego.
           Poniżej znajduje się krótki test, którego celem jest porównanie
           ergonomii pracy na standardowym interfejsie HMI oraz jego
           zmodernizowanej wersji zaprojektowanej zgodnie z zasadami UI/UX.
