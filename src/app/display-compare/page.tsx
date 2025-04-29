@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Image from "next/image";
 import styles from "../page.module.css";
 import Card from "@/components/card/Card";
 import Navbar from "@/components/navbar/Navbar";
@@ -8,6 +9,7 @@ import Footer from "@/components/footer/Footer";
 import useTimeDifference from "@/hooks/useTimeDifference";
 import dateToString from "@/utils/stringToDate";
 import { IExampleData } from "@/types";
+import panel from "@/../public/panel_operatorski.png";
 
 function CurrentFaliure() {
   const issuedDate = useMemo(() => new Date("2025-03-01T06:19:28.000Z"), []);
@@ -68,6 +70,18 @@ function CurrentFaliure() {
 
   return (
     <main className={styles.main}>
+      <div className={styles.imageWrapper}>
+        <Image
+          src={panel}
+          alt=""
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+          }}
+          priority
+        />
+      </div>
       <Navbar />
       <section className={styles.sectionWrapper}>
         {exampleData.map((item, index) => (
