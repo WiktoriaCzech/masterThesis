@@ -6,11 +6,15 @@
   border-top: none;
   border-bottom: none;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
   display: flex;
   flex-direction: row;
-  padding: 24px 104px 24px 32px;
-  min-height: 216px;
+  flex-direction: row;
+  padding: 1.5rem 104px 1.5rem 2rem;
+  max-width: 1000px;
   position: relative;
+  width: 100%;
+  margin: 1rem auto;
 }
 
 .danger {
@@ -31,21 +35,27 @@
 .leftSide {
   display: flex;
   flex-direction: column;
-
-  max-width: 50%;
   flex: 1;
+  max-width: 60%;
 }
 
 .sectorWrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-bottom: 30px;
+  padding-bottom: 1.5rem;
 }
 
 .sectorWrapper > h1 {
   padding-top: 0.2rem;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
+  line-height: 0.9;
+}
+
+.leftSide > p {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .rightSide {
@@ -60,6 +70,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
+  max-width: 40%;
+  flex: 1;
 }
 
 .row {
@@ -72,7 +84,6 @@
   position: absolute;
   top: 0;
   right: 0;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -81,12 +92,119 @@
   gap: 8px;
 }
 
-.paddingBottom {
-  padding-bottom: 30px;
+.dangerPosition > h1, .sectorWrapper > h1 {
+  margin: 0;
 }
 
-.leftSide > p {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.5rem;
+.paddingBottom {
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 1800px) {
+  .cardWrapper {
+    padding: 16px 48px 16px 24px;
+    border-left-width: 60px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .leftSide {
+    max-width: 50%;
+  }
+  .rightSide {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .cardWrapper {
+    padding: 16px 48px 16px 24px;
+    border-left-width: 48px;
+  }
+  .sectorWrapper > h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    padding: 1rem;
+    border-left-width: 32px;
+  }
+  .cardWrapper h1 {
+    font-size: 1.4rem;
+    line-height: 1;
+    padding-bottom: 0;
+  }
+  .cardWrapper h2 {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .cardWrapper p {
+    font-size: 0.8rem;
+  }
+
+  .leftSide,
+  .rightSide {
+    max-width: 100%;
+    margin-left: 8px;
+    padding: 8px;
+  }
+
+  .sectorWrapper > h1 {
+    font-size: 1.8rem;
+  }
+
+  .row {
+    gap: 8px;
+  }
+
+  .dangerPosition {
+    top: 8px;
+    right: 8px;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .cardWrapper {
+    flex-direction: column;
+
+    padding: 8px;
+    border-left-width: 24px;
+  }
+
+  .leftSide,
+  .rightSide {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .leftSide {
+    padding: 8px 0 12px 0;
+  }
+
+  .rightSide {
+    gap: 0;
+    border-left: none;
+    border-top-width: 1.5px;
+    border-top-style: solid;
+    padding: 12px 0 8px 0;
+    border-top-color: #eeeeee; 
+  }
+
+  .row {
+    gap: 8px;
+  }
+  .sectorWrapper, .paddingBottom{
+    padding-bottom: 1rem;
+  }
+
+  .sectorWrapper > h1 {
+    font-size: 1.8rem;
+  }
+  .leftSide > p {
+    gap: 12px;
+  }
 }
