@@ -4,77 +4,113 @@ import { useMemo } from "react";
 import styles from "./NewDisplay.module.css";
 import Card from "@/components/card/Card";
 import Navbar from "@/components/navbar/Navbar";
-import useTimeDifference from "@/hooks/useTimeDifference";
+import useTimeDifferences from "@/hooks/useTimeDifference";
 import dateToString from "@/utils/stringToDate";
-import { IExampleData } from "@/types";
+import { IExampleData, ViewKey } from "@/types";
+import buildCurrentData from "@/data/buildCurrentData";
+import buildLatestData from "@/data/buildLatestData";
+import buildMaintainData from "@/data/buildMaintainData";
 
-function NewDisplay() {
-  const issuedDate = useMemo(() => new Date("2025-03-01T06:19:28.000Z"), []);
-  const issuedDate2 = useMemo(() => new Date("2025-02-24T19:52:36.000Z"), []);
-  const issuedDate3 = useMemo(() => new Date("2025-01-29T08:13:08.000Z"), []);
+interface NewDisplayProps {
+  view: ViewKey;
+  onChangeView: (newView: ViewKey) => void;
+}
 
-  const issuedDateInString = dateToString(issuedDate, "full");
-  const issuedDateInString2 = dateToString(issuedDate2, "full");
-  const issuedDateInString3 = dateToString(issuedDate3, "full");
+function NewDisplay({ view, onChangeView }: NewDisplayProps) {
+  const isoDates = useMemo(() => {
+    switch (view) {
+      case "current":
+        return [
+          "2025-03-01T06:19:28.000Z",
+          "2025-02-24T19:52:36.000Z",
+          "2025-01-29T08:13:08.000Z",
+        ];
+      case "latest":
+        return [
+          "2025-01-08T06:34:30.000Z",
+          "2024-12-27T12:30:37.000Z",
+          "2024-12-18T08:13:08.000Z",
+        ];
+      case "maintain":
+        return [
+          "2025-04-27T06:34:30.000Z",
+          "2025-05-12T06:34:30.000Z",
+          "2025-09-15T06:34:30.000Z",
+          "2026-02-21T06:34:30.000Z",
+        ];
+      default:
+        return [];
+    }
+  }, [view]);
 
-  const timeDifference = useTimeDifference(issuedDate);
-  const timeDifference2 = useTimeDifference(issuedDate2);
-  const timeDifference3 = useTimeDifference(issuedDate3);
-
-  const exampleData: IExampleData[] = [
-    {
-      content: {
-        letter: "F",
-        name: "Stringer Stringerownia",
-        issuedDate: issuedDateInString,
-        description: "Stringer 2/S10",
-      },
-      details: {
-        serviceTime: timeDifference,
-        maintainerNote: "Wstążka nie trafia na pada celki",
-        maintainer: "Janusz Jankowski",
-        priority: 1,
-      },
-    },
-    {
-      content: {
-        letter: "D",
-        name: "Laminator 1",
-        issuedDate: issuedDateInString2,
-        description: "Laminator nr.1 Bootsolar H6",
-      },
-      details: {
-        serviceTime: timeDifference2,
-        maintainerNote: "Przerobienie gniazd",
-        maintainer: "Paweł Pawłowski",
-      },
-    },
-    {
-      content: {
-        letter: "B",
-        name: "NorthGlass H6",
-        issuedDate: issuedDateInString3,
-        description: "Szlifierka szkła Benteler M1+M2",
-      },
-      details: {
-        serviceTime: timeDifference3,
-        maintainerNote: "Wstążka nie trafia na pada celki",
-        maintainer: "Tadeusz Mocny",
-        priority: 2,
-      },
-    },
+  const completedIsoDates = [
+    new Date("2025-01-08T06:42:39.000Z"),
+    new Date("2025-01-09T06:23:03.000Z"),
+    new Date("2024-12-19T09:06:12.000Z"),
   ];
+
+  const issuedDates = useMemo(
+    () => isoDates.map((s) => new Date(s)),
+    [isoDates]
+  );
+
+  const issuedDTS = issuedDates.map((d) =>
+    view === "maintain" ? dateToString(d, "date") : dateToString(d, "full")
+  );
+  const completedDTS = issuedDates.map((d) => dateToString(d, "full"));
+  const timeDifferences = useTimeDifferences(issuedDates);
+
+  const completedTimeDifferences = completedIsoDates.map((d, index) =>
+    dateToString(new Date(d.getTime() - issuedDates[index].getTime()), "time")
+  );
+
+  const currentData = useMemo(
+    () => buildCurrentData({ issuedDTS, timeDifferences }),
+    [issuedDTS, timeDifferences]
+  );
+
+  const latestData = useMemo(
+    () =>
+      buildLatestData({
+        issuedDTS,
+        completedDTS,
+        completedTimeDifferences,
+      }),
+    [issuedDTS, completedDTS, completedTimeDifferences]
+  );
+
+  const maintainData = useMemo(
+    () => buildMaintainData({ issuedDTS }),
+    [issuedDTS]
+  );
+
+  let exampleData: IExampleData[] = [];
+  let cardType: "danger" | "latest" | "commingSoon" = "danger";
+  switch (view) {
+    case "current":
+      exampleData = currentData;
+      cardType = "danger";
+      break;
+    case "latest":
+      exampleData = latestData;
+      cardType = "latest";
+      break;
+    case "maintain":
+      exampleData = maintainData;
+      cardType = "commingSoon";
+      break;
+  }
 
   return (
     <main className={styles.main}>
-      <Navbar />
+      <Navbar activeView={view} onSelect={onChangeView} />
       <section className={styles.sectionWrapper}>
         {exampleData.map((item, index) => (
           <Card
-            key={`current_faliure_problem_${index}`}
+            key={`card_${index}`}
             content={item.content}
             details={item.details}
-            type="danger"
+            type={cardType}
           />
         ))}
       </section>

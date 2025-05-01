@@ -27,3 +27,17 @@ export interface ICardProps {
 }
 
 export type IExampleData = Omit<ICardProps, 'type'>
+
+export type ViewKey = "current" | "latest" | "maintain";
+
+export interface BuildDataProps {
+  issuedDTS: string[];
+}
+
+export interface BuildCurrentDataProps extends BuildDataProps {
+  timeDifferences: string[];
+}
+export interface BuildLatestDataProps extends BuildDataProps {
+  completedDTS: string[];
+  completedTimeDifferences: string[];
+}

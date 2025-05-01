@@ -6,10 +6,9 @@
     align-items: center;
     background-color: #e7e7e7;
     padding: 12px 24px;
-    position: absolute;
+    position: sticky;
     top:0;
-    left:0;
-    right:0;
+    width: 100%;
     z-index: 999;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
     gap: 24px
@@ -33,6 +32,16 @@
     cursor: pointer;
     border: none;
     font-size: 1.1rem;
+    color: #000;
+    transition: background-color 200ms ease-in-out;
+}
+
+.button:hover {
+    background-color: #aaa9a9;
+}
+
+.button.active {
+    background-color: #9b9a9a;
 }
 
 .clock {
@@ -134,6 +143,8 @@
 .drawerLink:hover {
     background-color: #cccccc;
 }
+
+
 
   @media (max-width: 2000px) {
     .buttonsWrapper {

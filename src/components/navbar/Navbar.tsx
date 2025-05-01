@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import ModalHelper from "../modal/modalHelper";
 import CalendarSVG from "@/../../public/svg/CalendarSVG";
@@ -9,28 +8,34 @@ import DangerSVG from "@/../../public/svg/DangerSVG";
 import InfoSVG from "@/../../public/svg/InfoSVG";
 import WrenchSVG from "@/../../public/svg/WrenchSVG";
 import useCurrentDate from "@/hooks/useCurrentDate";
-import useTimeDifference from "@/hooks/useTimeDifference";
+import useCurrentTime from "@/hooks/useCurrentTime";
+import { ViewKey } from "@/types";
 
-export default function Navbar() {
-  const buttonsData = [
+interface NavProps {
+  activeView: ViewKey;
+  onSelect: (v: ViewKey) => void;
+}
+
+export default function Navbar({ activeView, onSelect }: NavProps) {
+  const buttons = [
     {
+      key: "current" as const,
       icon: <DangerSVG color="#000" width={28} />,
       text: "Bieżące awarie",
-      url: "/current",
     },
     {
+      key: "latest" as const,
       icon: <WrenchSVG color="#000" width={32} />,
       text: "Ostatnie awarie",
-      url: "/latest",
     },
     {
+      key: "maintain" as const,
       icon: <CalendarSVG color="#000" width={29} />,
-      text: "Serwisy i konserwacje",
-      url: "/mantain",
+      text: "Serwisy",
     },
   ];
 
-  const time = useTimeDifference();
+  const time = useCurrentTime();
   const today = useCurrentDate();
 
   const [showInfo, setShowInfo] = useState(false);
@@ -38,6 +43,13 @@ export default function Navbar() {
 
   const handleInfoToggle = () => setShowInfo(!showInfo);
   const toggleDrawer = () => setDrawerOpen(!drawerOpen);
+
+  useEffect(() => {
+    const wrapper = document.getElementById("newDisplay");
+    if (wrapper) {
+      wrapper.style.overflow = drawerOpen ? "hidden" : "";
+    }
+  }, [drawerOpen]);
 
   return (
     <>
@@ -55,11 +67,15 @@ export default function Navbar() {
         </button>
 
         <div className={styles.buttonsWrapper}>
-          {buttonsData.map((btn, i) => (
-            <Link key={i} className={styles.button} href={btn.url}>
+          {buttons.map((btn) => (
+            <button
+              key={btn.key}
+              className={`${styles.button} ${activeView === btn.key ? styles.active : ""}`}
+              onClick={() => onSelect(btn.key)}
+            >
               {btn.icon}
               <span>{btn.text}</span>
-            </Link>
+            </button>
           ))}
           <button className={styles.button} onClick={handleInfoToggle}>
             <InfoSVG color="#000" width={25} />
@@ -67,7 +83,7 @@ export default function Navbar() {
         </div>
 
         <div className={styles.clock}>
-          <b>{time}</b>
+          <b>{time.toLocaleTimeString()}</b>
           <b>{today.toLocaleDateString()}</b>
         </div>
       </nav>
@@ -91,16 +107,18 @@ export default function Navbar() {
           </button>
         </div>
         <ul className={styles.drawerList}>
-          {buttonsData.map((btn, i) => (
-            <li key={i}>
-              <Link
-                href={btn.url}
-                onClick={toggleDrawer}
+          {buttons.map((btn) => (
+            <li key={btn.key}>
+              <button
                 className={styles.drawerLink}
+                onClick={() => {
+                  onSelect(btn.key);
+                  toggleDrawer();
+                }}
               >
                 {btn.icon}
                 <span>{btn.text}</span>
-              </Link>
+              </button>
             </li>
           ))}
           <li>

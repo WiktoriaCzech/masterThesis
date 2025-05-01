@@ -4,13 +4,13 @@
     font-family: var(--font-geist-sans);
     display: flex;
     flex-direction: column;
-    padding: 2rem;
     justify-items: center;
     align-items: baseline;
+    max-height: calc(100vh - 140px);
   }
   
   .sectionWrapper {
-    margin-top: 90px;
+    padding: 2rem;
     flex: 1;
     width: 100%;
     display: flex;
@@ -20,13 +20,13 @@
   }
   
   @media (max-width: 768px) {
-    .main {
+    .sectionWrapper {
       padding: 1rem;
     }
   }
   
   @media (max-width: 520px) {
-    .main {
+    .sectionWrapper {
       padding: 0.5rem;
     }
   }
