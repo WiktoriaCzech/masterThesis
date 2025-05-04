@@ -1,39 +1,55 @@
 .footerWrapper {
-    background-color: #f3f3f3;
-    margin-top: auto;
-    height: 100px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    padding: 0 2rem;
-    z-index: 10;
-  }
-  
-  .button {
-    background-color: #0071C5;
-    padding: 1rem 2.5rem;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 500;
-    transition: background-color 300ms ease-in-out;
-  
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .button:hover {
-    background-color: #00589b;
-  }
+  background-color: #f3f3f3;
+  margin-top: auto;
+  height: 100px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 0 2rem;
+  z-index: 10;
+}
 
-  .special {
-    border: none;
-    cursor: pointer;
+.button {
+  background-color: #0071C5;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;            
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: background-color 300ms ease-in-out;
+  display: flex;
+  gap: 10px;                      
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: #00589b;
+}
+
+.special {
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1450px){
+  .button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;  
+    font-size: 1rem;   
+    gap: 6px; 
   }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    gap: 4px;
+  }
+}

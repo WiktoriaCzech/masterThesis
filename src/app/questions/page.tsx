@@ -1,17 +1,20 @@
-import styles from "../page.module.css";
+import styles from "./page.module.css";
 import Footer from "@/components/footer/Footer";
 
 function Questions() {
   return (
     <main className={styles.main}>
-      <section className={`${styles.sectionWrapper} ${styles.formOverride}`}>
+      <section className={`${styles.questionsWrapper} ${styles.formOverride}`}>
         <h3>
           Dziękuję za zapoznanie się z obiema wersjami panelu operatorskiego.
+        </h3>
+        <br></br>
+        <h3>
           Poniżej znajduje się krótki test, którego celem jest porównanie
           ergonomii pracy na standardowym interfejsie HMI oraz jego
           zmodernizowanej wersji zaprojektowanej zgodnie z zasadami UI/UX.
         </h3>
-        <form className={styles.form}>
+        <form className={styles.questionsForm}>
           <ol>
             <li>
               <label>

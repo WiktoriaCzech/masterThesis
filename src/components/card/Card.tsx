@@ -9,7 +9,6 @@ import TimedWrenchSVG from "../../../public/svg/TimedWrenchSVG";
 import DangerSVG from "../../../public/svg/DangerSVG";
 import { ICardProps } from "@/types";
 
-
 function Card({ content, details, type }: ICardProps) {
   const typeMapping = {
     danger: {
@@ -35,14 +34,14 @@ function Card({ content, details, type }: ICardProps) {
     {
       icon:
         type === "danger" ? (
-          <TimedWrenchSVG color={color} width={50} />
+          <TimedWrenchSVG color={color} width={36} />
         ) : (
-          <WrenchSVG color={color} width={38} />
+          <WrenchSVG color={color} width={32} />
         ),
       text: details.serviceTime ? details.serviceTime : "",
     },
     {
-      icon: <CalendarSVG color={color} width={38} />,
+      icon: <CalendarSVG color={color} width={32} />,
       text: details.comingServiceDate ? (
         <>
           Data planowanego serwisu: <b>{details.comingServiceDate}</b>
@@ -52,16 +51,16 @@ function Card({ content, details, type }: ICardProps) {
       ),
     },
     {
-      icon: <PersonSVG color={color} width={38} />,
+      icon: <PersonSVG color={color} width={32} />,
       text: details.maintainer || "",
     },
     {
-      icon: <CheckboxSVG color={color} width={38} />,
+      icon: <CheckboxSVG color={color} width={32} />,
       text: details.category || "",
     },
 
     {
-      icon: <PenSVG color={color} width={38} />,
+      icon: <PenSVG color={color} width={32} />,
       text: details.maintainerNote || "",
     },
   ];
@@ -71,7 +70,7 @@ function Card({ content, details, type }: ICardProps) {
       <div className={styles.leftSide}>
         <div className={styles.sectorWrapper}>
           <h1 className="applyColor">{content.letter}</h1>
-          <CompanyIconSVG />
+          <CompanyIconSVG width={40} />
         </div>
         <div className={styles.paddingBottom}>
           <h1>{content.name}</h1>
@@ -109,9 +108,13 @@ function Card({ content, details, type }: ICardProps) {
                   <b>{item.text}</b>
                 </p>
               ) : (
-                <p style={{
-                  paddingLeft: type === 'danger' ? '10px' : 0
-                }}>{item.text}</p>
+                <p
+                  style={{
+                    paddingLeft: type === "danger" ? "4px" : 0,
+                  }}
+                >
+                  {item.text}
+                </p>
               )}
             </div>
           ))}
@@ -120,7 +123,7 @@ function Card({ content, details, type }: ICardProps) {
             <h1
               style={{
                 color: color,
-                fontSize: type === "danger" ? "3rem" : "2rem",
+                fontSize: type === "danger" ? "2.5rem" : "2rem",
                 padding: 0,
               }}
             >
@@ -128,8 +131,8 @@ function Card({ content, details, type }: ICardProps) {
             </h1>
             <DangerSVG
               color={color}
-              width={type === "danger" ? 51 : 41}
-              height={type === "danger" ? 48 : 38}
+              width={type === "danger" ? 38 : 32}
+              height={type === "danger" ? 38 : 32}
             />
           </div>
         )}

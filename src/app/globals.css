@@ -36,8 +36,7 @@ a {
 }
 
 h1:not(.applyColor),
-h2,
-p {
+h2 {
   color: #000;
 }
 
@@ -49,6 +48,25 @@ h1:not(.applyColor) {
 h2,
 p {
   font-weight: 400;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #333333;
+}
+p {
+  color: #333333;
+  line-height: 1.4;
+  font-size: 0.95rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,59 +1,142 @@
 "use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import styles from './Navbar.module.css';
-import CalendarSVG from '../../../public/svg/CalendarSVG';
-import DangerSVG from '../../../public/svg/DangerSVG';
-import InfoSVG from '../../../public/svg/InfoSVG';
-import WrenchSVG from '../../../public/svg/WrenchSVG';
-import useCurrentDate from '@/hooks/useCurrentDate';
-import useTimeDifference from '@/hooks/useTimeDifference';
-import ModalHelper from '../modal/modalHelper';
+import { useState, useEffect } from "react";
+import styles from "./Navbar.module.css";
+import ModalHelper from "../modal/modalHelper";
+import CalendarSVG from "@/../../public/svg/CalendarSVG";
+import DangerSVG from "@/../../public/svg/DangerSVG";
+import InfoSVG from "@/../../public/svg/InfoSVG";
+import WrenchSVG from "@/../../public/svg/WrenchSVG";
+import useCurrentDate from "@/hooks/useCurrentDate";
+import useCurrentTime from "@/hooks/useCurrentTime";
+import { ViewKey } from "@/types";
 
+interface NavProps {
+  activeView: ViewKey;
+  onSelect: (v: ViewKey) => void;
+}
 
-function Navbar(){
+export default function Navbar({ activeView, onSelect }: NavProps) {
+  const buttons = [
+    {
+      key: "current" as const,
+      icon: <DangerSVG color="#000" width={28} />,
+      text: "Bieżące awarie",
+    },
+    {
+      key: "latest" as const,
+      icon: <WrenchSVG color="#000" width={32} />,
+      text: "Ostatnie awarie",
+    },
+    {
+      key: "maintain" as const,
+      icon: <CalendarSVG color="#000" width={29} />,
+      text: "Serwisy",
+    },
+  ];
 
-    const buttonsData = [
-        {icon: <DangerSVG color='#000' width={32}/>, text: 'Bieżące awarie', url: '/current'},
-        {icon: <WrenchSVG color='#000' width={35}/>, text: 'Ostatnie awarie', url: '/latest'},
-        {icon: <CalendarSVG color='#000' width={32}/>, text: 'Serwisy i konserwacje', url: '/mantain'},
-    ];
+  const time = useCurrentTime();
+  const today = useCurrentDate();
 
-    const time = useTimeDifference();
-    const today = useCurrentDate();
+  const [showInfo, setShowInfo] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-    const [showInfo, setShowInfo] = useState(false);
+  const handleInfoToggle = () => setShowInfo(!showInfo);
+  const toggleDrawer = () => setDrawerOpen(!drawerOpen);
 
-    const handleInfoToggle = () => {
-        console.log('chuj')
-        setShowInfo(!showInfo);
+  useEffect(() => {
+    const wrapper = document.getElementById("newDisplay");
+    if (wrapper) {
+      wrapper.style.overflow = drawerOpen ? "hidden" : "";
     }
+  }, [drawerOpen]);
 
-    return(
-        <>
-        <nav className={styles.navWrapper}>
-            <div className={styles.buttonsWrapper}>
-                {buttonsData.map((button, index)=> (
-                    <Link key={`nav_button_${index}`} className={styles.button} href={button.url}>
-                        {button.icon}
-                         <span>{button.text}</span>
-                    </Link>
-                ))}
-                <button className={styles.button} onClick={handleInfoToggle}>
-                    <InfoSVG color='#000' width={30}/>
-                </button>
-            </div>
-            <div className={styles.clock}>
-                <b>{time}</b>
-                <b>{today.toLocaleDateString()}</b>
-            </div>
-        </nav>
-        {showInfo && (
-            <ModalHelper onClose={handleInfoToggle} />
-        )}
-        </>
-    )
-};
+  return (
+    <>
+      <nav role="navigation" className={styles.navWrapper}>
+        <button
+          className={styles.hamburger}
+          onClick={toggleDrawer}
+          aria-label="Menu"
+          aria-expanded={drawerOpen}
+          aria-controls="mobile-drawer"
+        >
+          <span className={styles.bar} />
+          <span className={styles.bar} />
+          <span className={styles.bar} />
+        </button>
 
-export default Navbar;
+        <div className={styles.buttonsWrapper}>
+          {buttons.map((btn) => (
+            <button
+              key={btn.key}
+              className={`${styles.button} ${activeView === btn.key ? styles.active : ""}`}
+              onClick={() => onSelect(btn.key)}
+            >
+              {btn.icon}
+              <span>{btn.text}</span>
+            </button>
+          ))}
+          <button className={styles.button} onClick={handleInfoToggle}>
+            <InfoSVG color="#000" width={25} />
+          </button>
+        </div>
+
+        <div className={styles.clock}>
+          <b>{time.toLocaleTimeString()}</b>
+          <b>{today.toLocaleDateString()}</b>
+        </div>
+      </nav>
+
+      <div
+        className={`${styles.drawerOverlay} ${drawerOpen ? styles.open : ""}`}
+        onClick={toggleDrawer}
+      />
+
+      <aside
+        id="mobile-drawer"
+        className={`${styles.drawer} ${drawerOpen ? styles.open : ""}`}
+      >
+        <div className={styles.drawerHeader}>
+          <button
+            onClick={toggleDrawer}
+            className={styles.closeBtn}
+            aria-label="Zamknij"
+          >
+            &times;
+          </button>
+        </div>
+        <ul className={styles.drawerList}>
+          {buttons.map((btn) => (
+            <li key={btn.key}>
+              <button
+                className={styles.drawerLink}
+                onClick={() => {
+                  onSelect(btn.key);
+                  toggleDrawer();
+                }}
+              >
+                {btn.icon}
+                <span>{btn.text}</span>
+              </button>
+            </li>
+          ))}
+          <li>
+            <button
+              className={styles.drawerLink}
+              onClick={() => {
+                handleInfoToggle();
+                toggleDrawer();
+              }}
+            >
+              <InfoSVG color="#000" width={30} />
+              <span>Info</span>
+            </button>
+          </li>
+        </ul>
+      </aside>
+
+      {showInfo && <ModalHelper onClose={handleInfoToggle} />}
+    </>
+  );
+}
