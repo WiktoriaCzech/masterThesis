@@ -1,0 +1,60 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background-color: #f5f5f5;
+  }
+  
+  .thankYouBox {
+    background-color: #ffffff; 
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    margin: 0 0.5rem;
+  }
+  
+  .thankYouTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #134b73;
+  }
+  
+  .thankYouText {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444444;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .thankYouBox {
+      padding: 2rem;
+      margin: 0 0.25rem;
+    }
+    .thankYouTitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .thankYouText {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .thankYouBox {
+      padding: 1.5rem;
+    }
+    .thankYouTitle {
+      font-size: 1.25rem;
+    }
+    .thankYouText {
+      font-size: 0.9rem;
+    }
+  }
+  
