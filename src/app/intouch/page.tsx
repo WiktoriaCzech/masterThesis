@@ -13,6 +13,7 @@ export default function Intouch() {
       <div className={`${styles.imageWrapper} ${styles.pointer}`}>
         <Image
           src={zbiornik}
+          draggable={false}
           alt=""
           style={{
             width: "100%",
@@ -23,7 +24,7 @@ export default function Intouch() {
           priority
         />
       </div>
-      <Footer url={"/thank-you"} />
+      <Footer url={"/cars"} />
     </main>
   );
 }
