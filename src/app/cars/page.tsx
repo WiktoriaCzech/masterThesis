@@ -16,20 +16,22 @@ export default function Cars() {
         którego obsługą czułbyś się najbardziej komfortowo i intuicyjnie podczas
         jazdy.
       </h3>
-      {displays.map((display, index) => (
-        <Image
-          className={styles.imageItem}
-          key={`car_display_${index}`}
-          src={display}
-          draggable={false}
-          alt=""
-          style={{
-            objectFit: "cover",
-            cursor: "pointer",
-          }}
-          priority
-        />
-      ))}
+      <div className={styles.imageGridWrapper}>
+        {displays.map((display, index) => (
+          <Image
+            className={styles.imageItem}
+            key={`car_display_${index}`}
+            src={display}
+            draggable={false}
+            alt=""
+            style={{
+              objectFit: "cover",
+              cursor: "pointer",
+            }}
+            priority
+          />
+        ))}
+      </div>
       <Footer url={"/thank-you"} />
     </main>
   );
