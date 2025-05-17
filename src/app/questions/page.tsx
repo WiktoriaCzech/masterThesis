@@ -18,7 +18,7 @@ function Questions() {
           <ol>
             <li>
               <label>
-                1. Czy w pierwszym (oryginalnym) panelu operatorskim łatwo było
+                Czy w pierwszym (oryginalnym) panelu operatorskim łatwo było
                 odnaleźć najważniejsze informacje?
               </label>
               <div className={styles.answer}>
@@ -37,8 +37,8 @@ function Questions() {
 
             <li>
               <label>
-                2. Czy nowy (ulepszony) panel operatorski jest bardziej czytelny
-                i zrozumiały?
+                Czy nowy (ulepszony) panel operatorski jest bardziej czytelny i
+                zrozumiały?
               </label>
               <div className={styles.answer}>
                 <input
@@ -70,7 +70,7 @@ function Questions() {
 
             <li>
               <label>
-                3. Czy interaktywność w nowym panelu ułatwia korzystanie z
+                Czy interaktywność w nowym panelu ułatwia korzystanie z
                 interfejsu?
               </label>
               <div className={styles.answer}>
@@ -103,6 +103,26 @@ function Questions() {
                   value="Utrudnia korzystanie"
                 />
                 <label htmlFor="q3d">Utrudnia korzystanie</label>
+              </div>
+            </li>
+
+            <li>
+              <label>Do której kategorii wiekowej należysz?</label>
+              <div className={styles.answer}>
+                <input type="radio" id="q4a" name="q4" value="18-30" />
+                <label htmlFor="q4a">18 - 30</label>
+              </div>
+              <div className={styles.answer}>
+                <input type="radio" id="q4b" name="q4" value="30-40" />
+                <label htmlFor="q4b">30 - 40</label>
+              </div>
+              <div className={styles.answer}>
+                <input type="radio" id="q4c" name="q4" value="40-50" />
+                <label htmlFor="q4c">40 - 50</label>
+              </div>
+              <div className={styles.answer}>
+                <input type="radio" id="q4d" name="q4" value="50+" />
+                <label htmlFor="q4d">50+</label>
               </div>
             </li>
           </ol>
