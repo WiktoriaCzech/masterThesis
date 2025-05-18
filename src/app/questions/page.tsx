@@ -128,7 +128,7 @@ function Questions() {
           </ol>
         </form>
       </section>
-      <Footer url="/intouch" />
+      <Footer url="/intouch/water-tank" />
     </main>
   );
 }

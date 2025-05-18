@@ -1,0 +1,45 @@
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr 100px;
+  height: 100vh;
+  margin: 0;                
+}
+
+.intouchMessage {
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: 0;               
+  padding: 1rem;          
+  text-align: left;
+  background-color: #f3f3f3; 
+}
+
+.imageWrapper {
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;         
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.imageWrapper :global(img) {
+  cursor: pointer;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.source {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}

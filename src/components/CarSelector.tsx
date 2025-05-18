@@ -21,7 +21,7 @@ export default function CarSelector({ slug }: CarSelectorProps) {
 
   const questions: Record<Slug, string> = {
     step1:
-      "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci zmienić ustawienia klimatyzacji",
+      "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci zmienić ustawienia klimatyzacji.",
     step2:
       "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci włączyć nawigację ?",
     step3:

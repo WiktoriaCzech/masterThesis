@@ -43,3 +43,4 @@ export interface BuildLatestDataProps extends BuildDataProps {
 }
 
 export type Slug = "step1" | "step2" | "step3";
+export type PanelTypes = "water-tank" | "house" | "pump";
