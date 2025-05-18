@@ -40,7 +40,7 @@ export default function Intouch() {
           priority
         />
       </div>
-      <Footer url={"/cars"} />
+      <Footer url={"/cars/step1"} />
     </main>
   );
 }

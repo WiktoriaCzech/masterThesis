@@ -41,3 +41,5 @@ export interface BuildLatestDataProps extends BuildDataProps {
   completedDTS: string[];
   completedTimeDifferences: string[];
 }
+
+export type Slug = "step1" | "step2" | "step3";
