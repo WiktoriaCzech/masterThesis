@@ -1,10 +1,6 @@
 .main {
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 1rem; */
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding: 1rem;
   box-sizing: border-box;
   margin: 0 auto;
@@ -16,10 +12,11 @@
   font-size: 1.25rem;
   line-height: 1.4;
   color: #000;
-  z-index: 2;
-  position: fixed;
+  z-index: 10;
+  position: sticky;
   top: 0;
-  width: 100%;
+  text-align: left;
+  background-color: #f3f3f3;
 }
 
 .imageItem {
@@ -37,14 +34,14 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 1rem;
-  margin: 52px 0 100px 0;
+  padding-bottom: 120px;
 }
 
 @media (max-width: 768px) {
   .imageGridWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
-    margin: 100px 0;
+
   }
   .message {
     font-size: 1rem;

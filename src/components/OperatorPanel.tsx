@@ -19,10 +19,10 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
 
   const questions: Record<PanelTypes, string> = {
     "water-tank":
-      "W którym miejscu kliknał byś na poniższym panelu operatorskim aby zmienić poziom wody w zbiorniku ?",
-    pump: "W którym miejscu kliknał byś na poniższym panelu operatorskim aby uruchomić/wyłączyć pompę wody ?",
+      "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Klikając lewym przyciskiem myszy wskaż miejsce, w którym można zmienić poziom wody w zbiorniku.",
+    pump: "Poniższy ekran przedstawia wizualizację procesu przepływu cieczy w instalacji przemysłowej, złożonej ze zbiorników, pomp i zaworów sterujących. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić górną pompę wody (Pump 1)?",
     house:
-      "W którym miejscu kliknał byś na poniższym panelu operatorskim aby załączyć ogrzewanie w pomieszczeniu ?",
+      "W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby załączyć ogrzewanie w pomieszczeniu?",
   };
 
   const nextUrls: Record<PanelTypes, string> = {

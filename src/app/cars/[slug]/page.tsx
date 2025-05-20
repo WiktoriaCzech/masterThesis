@@ -4,7 +4,12 @@ import { Slug } from "@/types";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ slug: "step1" }, { slug: "step2" }, { slug: "step3" }];
+  return [
+    { slug: "step1" },
+    { slug: "step2" },
+    { slug: "step3" },
+    { slug: "step4" },
+  ];
 }
 
 interface PageProps {

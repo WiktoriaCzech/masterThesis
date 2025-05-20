@@ -14,7 +14,7 @@ function ThankYouPage() {
           pracę automatyków.
         </p>
         <p className={styles.thankYouText}>
-          Dziękujemy za poświęcony czas i zaangażowanie!
+          Dziękuję za poświęcony czas i zaangażowanie!
         </p>
       </div>
     </main>

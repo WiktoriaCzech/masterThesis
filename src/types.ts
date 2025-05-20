@@ -42,5 +42,5 @@ export interface BuildLatestDataProps extends BuildDataProps {
   completedTimeDifferences: string[];
 }
 
-export type Slug = "step1" | "step2" | "step3";
+export type Slug = "step1" | "step2" | "step3" | "step4";
 export type PanelTypes = "water-tank" | "house" | "pump";
