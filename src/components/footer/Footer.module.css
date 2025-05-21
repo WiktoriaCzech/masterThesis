@@ -37,6 +37,13 @@
   cursor: pointer;
 }
 
+.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 @media (max-width: 1450px){
   .button {
     padding: 0.75rem 1.5rem;
