@@ -38,7 +38,7 @@ export default function CarSelector({ slug }: CarSelectorProps) {
     step1: "/cars/step2",
     step2: "/cars/step3",
     step3: "/cars/step4",
-    step4: "/thank-you",
+    step4: "/energy-consumption",
   };
 
   const handleClick = () => setShowPopup(true);
