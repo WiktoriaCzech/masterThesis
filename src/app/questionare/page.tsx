@@ -216,7 +216,20 @@ export default function Questionare() {
           </ol>
         </form>
 
-        <Footer url="/thank-you" disabled={!firstQuestionComplete} />
+        <Footer
+          disabled={!firstQuestionComplete}
+          href={{
+            pathname: "/interactive-tiles",
+            query: {
+              settings: ranks.settings,
+              music: ranks.music,
+              battery: ranks.battery,
+              navigation: ranks.navigation,
+              phone: ranks.phone,
+              ac: ranks.ac,
+            },
+          }}
+        />
       </div>
     </main>
   );

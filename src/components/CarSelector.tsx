@@ -80,7 +80,7 @@ export default function CarSelector({ slug }: CarSelectorProps) {
         ))}
       </div>
 
-      <Footer url={footerUrl} />
+      <Footer href={footerUrl} />
     </main>
   );
 }

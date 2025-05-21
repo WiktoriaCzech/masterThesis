@@ -40,7 +40,7 @@ export default function Energy() {
         />
       </div>
 
-      <Footer url="/questionare" />
+      <Footer href="/questionare" />
     </main>
   );
 }

@@ -44,3 +44,7 @@ export interface BuildLatestDataProps extends BuildDataProps {
 
 export type Slug = "step1" | "step2" | "step3" | "step4";
 export type PanelTypes = "water-tank" | "house" | "pump";
+export type Ranks = Record<
+  "settings" | "music" | "battery" | "navigation" | "phone" | "ac",
+  string
+>;

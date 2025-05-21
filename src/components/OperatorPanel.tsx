@@ -107,7 +107,7 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
         </p>
       )}
 
-      <Footer url={footerUrl} />
+      <Footer href={footerUrl} />
     </main>
   );
 }

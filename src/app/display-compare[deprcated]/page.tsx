@@ -30,7 +30,7 @@ function CompareDisplaysPage() {
           <NewDisplay view={view} onChangeView={setView} />
         </div>
       </main>
-      <Footer url="/questions" />
+      <Footer href="/questions" />
     </>
   );
 }
