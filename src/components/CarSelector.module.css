@@ -1,6 +1,6 @@
 .main {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 100px);
   padding: 1rem;
   box-sizing: border-box;
   margin: 0 auto;
@@ -17,6 +17,14 @@
   top: 0;
   text-align: left;
   background-color: #f3f3f3;
+
+}
+
+.imageGridWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 1rem;
 }
 
 .imageItem {
@@ -27,14 +35,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 540px;
 }
 
-.imageGridWrapper {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 1rem;
-  padding-bottom: 120px;
+@media (max-width: 1440px) {
+  .imageItem {
+     max-height: 340px;
+  }
+  
 }
 
 @media (max-width: 768px) {

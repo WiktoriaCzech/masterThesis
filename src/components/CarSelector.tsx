@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Footer from "@/components/footer/Footer";
 import Popup from "@/components/popup/popup";
 import styles from "./CarSelector.module.css";
@@ -9,11 +9,12 @@ import styles from "./CarSelector.module.css";
 import bmw from "@/../public/BMW.webp";
 import bmwZoom from "@/../public/bmw-zoom.png";
 import toyota from "@/../public/toyota.jpg";
-import toyotaZoom from "@/../public/toyota-zoom.png";
+import toyotaZoom from "@/../public/toyota-crown-platinum-nav.jpg";
 import ford from "@/../public/ford.jpg";
 import fordZoom from "@/../public/ford-zoom.png";
+import fordZoomAC from "@/../public/ford-zoom-ac.jpg";
 import tesla from "@/../public/tesla.jpg";
-import teslaZoom from "@/../public/tesla-zoom.jpg";
+import tesla3Zoom from "@/../public/Tesla-3-zoom.jpg";
 import { Slug } from "@/types";
 
 interface CarSelectorProps {
@@ -44,10 +45,23 @@ export default function CarSelector({ slug }: CarSelectorProps) {
   const handleClick = () => setShowPopup(true);
   const handleClose = () => setShowPopup(false);
 
-  const displays =
-    slug === "step1"
-      ? [bmw, toyota, ford, tesla]
-      : [bmwZoom, toyotaZoom, fordZoom, teslaZoom];
+  let displays: StaticImageData[] = [];
+
+  switch (slug) {
+    case "step1":
+      displays = [bmw, toyota, ford, tesla];
+      break;
+    case "step2":
+      displays = [bmwZoom, toyotaZoom, fordZoomAC, tesla3Zoom];
+      break;
+    case "step3":
+      displays = [bmwZoom, toyotaZoom, fordZoom, tesla3Zoom];
+      break;
+    case "step4":
+      displays = [bmwZoom, toyotaZoom, fordZoom, tesla3Zoom];
+      break;
+  }
+
   const question = questions[slug];
   const footerUrl = nextUrls[slug];
 

@@ -10,10 +10,14 @@ export default function Home() {
       <div className={styles.cardWrapper}>
         <h1>Dziękuje za wyrażenie chęci udziału w badaniu.</h1>
         <h2>
-          Celem badania jest analiza sposobu postrzegania i obsługi elementów
-          wizualizacji w interfejsach operatorskich HMI i SCADA. Wyniki posłużą
-          do opracowania wytycznych projektowych dla przejrzystych i
-          intuicyjnych ekranów synoptycznych.
+          Celem badania jest analiza zachowań użytkowników (operatorów) podczas
+          obsługi interfejsów wizualizacji procesu w systemach automatyki,
+          takich jak panele operatorskie HMI i ekrany synoptyczne SCADA, a także
+          w systemach automatyki transportowej, np. ekrany dotykowe w pojazdach.
+          Badanie obejmuje przeprowadzenie testowych symulacji i wizualizacji, a
+          jego wyniki posłużą do sformułowania wytycznych projektowych dla
+          budowy przejrzystych, intuicyjnych i przyjaznych interfejsów
+          operatora.
         </h2>
 
         <form
