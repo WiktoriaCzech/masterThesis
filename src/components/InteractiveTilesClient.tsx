@@ -14,5 +14,8 @@ export default function InteractiveTilesClient() {
     ac: params.get("ac") ?? "",
   };
 
-  return <InteractiveGrid ranks={ranks} />;
+  const pos =
+    (params.get("pos") as "horizontal" | "vertical" | "grid" | "") ?? "";
+
+  return <InteractiveGrid ranks={ranks} pos={pos} />;
 }

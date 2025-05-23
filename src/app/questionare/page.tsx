@@ -14,6 +14,8 @@ export default function Questionare() {
     ac: "",
   });
 
+  const [pos, setPos] = useState<"horizontal" | "vertical" | "grid" | "">("");
+
   const handleRankChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     key: keyof typeof ranks
@@ -24,7 +26,8 @@ export default function Questionare() {
     }
   };
 
-  const firstQuestionComplete = Object.values(ranks).every((v) => v !== "");
+  const firstQuestionComplete =
+    Object.values(ranks).every((v) => v !== "") && pos !== "";
 
   return (
     <main className={`${styles.main} ${styles.overrideMain}`}>
@@ -144,6 +147,8 @@ export default function Questionare() {
                   id="layout-horizontal"
                   name="layout"
                   value="horizontal"
+                  checked={pos === "horizontal"}
+                  onChange={(e) => setPos(e.target.value as "horizontal")}
                 />
                 <label htmlFor="layout-horizontal">Poziomym</label>
               </div>
@@ -153,6 +158,8 @@ export default function Questionare() {
                   id="layout-vertical"
                   name="layout"
                   value="vertical"
+                  checked={pos === "vertical"}
+                  onChange={(e) => setPos(e.target.value as "vertical")}
                 />
                 <label htmlFor="layout-vertical">Pionowym</label>
               </div>
@@ -162,6 +169,8 @@ export default function Questionare() {
                   id="layout-grid"
                   name="layout"
                   value="grid"
+                  checked={pos === "grid"}
+                  onChange={(e) => setPos(e.target.value as "grid")}
                 />
                 <label htmlFor="layout-vertical">Siatka</label>
               </div>
@@ -227,6 +236,7 @@ export default function Questionare() {
               navigation: ranks.navigation,
               phone: ranks.phone,
               ac: ranks.ac,
+              pos,
             },
           }}
         />

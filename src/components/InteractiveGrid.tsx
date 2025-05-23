@@ -6,10 +6,11 @@ import { Ranks } from "@/types";
 
 interface Props {
   ranks: Ranks;
+  pos: "horizontal" | "vertical" | "grid" | "";
   onComplete?: (placements: Record<number, string[]>) => void;
 }
 
-export default function InteractiveGrid({ ranks, onComplete }: Props) {
+export default function InteractiveGrid({ ranks, pos, onComplete }: Props) {
   const polishMap: Record<string, string> = {
     settings: "Ustawienia",
     music: "Muzyka",
@@ -28,19 +29,19 @@ export default function InteractiveGrid({ ranks, onComplete }: Props) {
     Record<number, string[]>
   >({});
 
-  const handleTileClick = (pos: number) => {
+  const handleTileClick = (posNum: number) => {
     if (currentIndex >= orderedElements.length) return;
     const key = orderedElements[currentIndex];
-    setTileAssignments((prev) => {
-      const arr = prev[pos] || [];
-      return { ...prev, [pos]: [...arr, key] };
-    });
+    setTileAssignments((prev) => ({
+      ...prev,
+      [posNum]: [...(prev[posNum] || []), key],
+    }));
     const next = currentIndex + 1;
     setCurrentIndex(next);
     if (next === orderedElements.length && onComplete) {
       onComplete({
         ...tileAssignments,
-        [pos]: [...(tileAssignments[pos] || []), key],
+        [posNum]: [...(tileAssignments[posNum] || []), key],
       });
     }
   };
@@ -54,28 +55,31 @@ export default function InteractiveGrid({ ranks, onComplete }: Props) {
 
   return (
     <div className={styles.container}>
-      {!isDone ? (
-        <h3 className={styles.question}>
-          Wybierz położenie elementu:&nbsp;
-          <span className={styles.highlight}>
-            {polishMap[orderedElements[currentIndex]]}
-          </span>
-        </h3>
-      ) : (
-        <h3 className={styles.question}>Rozmieszczenie zakończone!</h3>
-      )}
+      <h3 className={styles.question}>
+        {!isDone ? (
+          <>
+            Wybierz położenie elementu:&nbsp;
+            <span className={styles.highlight}>
+              {polishMap[orderedElements[currentIndex]]}
+            </span>
+          </>
+        ) : (
+          <>Rozmieszczenie zakończone! Możesz przejść dalej</>
+        )}
+      </h3>
 
-      <div className={styles.grid}>
+      {/* apply one of three layout classes */}
+      <div className={`${styles.wrapper} ${styles[pos] || ""}`}>
         {Array.from({ length: 6 }, (_, i) => {
-          const pos = i + 1;
-          const assigned = tileAssignments[pos] || [];
+          const posNum = i + 1;
+          const assigned = tileAssignments[posNum] || [];
           return (
             <div
-              key={pos}
+              key={posNum}
               className={`${styles.tile} ${
                 assigned.length ? styles.filled : styles.empty
               }`}
-              onClick={() => !isDone && handleTileClick(pos)}
+              onClick={() => !isDone && handleTileClick(posNum)}
             >
               {assigned.map((key, idx) => (
                 <div key={idx}>{polishMap[key]}</div>

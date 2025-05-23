@@ -1,12 +1,18 @@
 .container {
   padding: 1rem;
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  height: calc(100vh - 100px);
 }
 
 .question {
   margin-bottom: 1rem;
   font-size: 1.25rem;
+  position: sticky;
+  top: 0;
+  padding: 0.5rem;
+  background-color: #f3f3f3;
 }
 
 .highlight {
@@ -16,7 +22,22 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(3, 250px);
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.horizontal {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem; 
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
 }
 
@@ -33,6 +54,18 @@
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s, border-color 0.2s;
+}
+
+.grid .tile {
+  flex: 0 0 250px;
+  width: 250px;
+  margin: 0 auto;   
+}
+
+.vertical .tile, .horizontal .tile {
+  flex: 0 0 150px;     
+  width: 150px;      
+  margin: 0 auto;       
 }
 
 .tile.empty:hover {
