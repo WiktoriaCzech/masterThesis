@@ -1,23 +1,13 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
-import InteractiveGrid from "@/components/InteractiveGrid";
+import { Suspense } from "react";
+import InteractiveTilesClient from "@/components/InteractiveTilesClient";
 import Footer from "@/components/footer/Footer";
 
-export default function InteractiveTiles() {
-  const params = useSearchParams();
-  const ranks = {
-    settings: params.get("settings") || "",
-    music: params.get("music") || "",
-    battery: params.get("battery") || "",
-    navigation: params.get("navigation") || "",
-    phone: params.get("phone") || "",
-    ac: params.get("ac") || "",
-  };
-
+export default function Page() {
   return (
     <>
-      <InteractiveGrid ranks={ranks} />
+      <Suspense fallback={<div>Loading…</div>}>
+        <InteractiveTilesClient />
+      </Suspense>
       <Footer href="/thank-you" />
     </>
   );
