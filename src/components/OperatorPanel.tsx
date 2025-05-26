@@ -6,7 +6,7 @@ import Footer from "@/components/footer/Footer";
 import Popup from "@/components/popup/popup";
 import styles from "./OperatorPanel.module.css";
 import zbiornik from "@/../public/intouch_zbiornik.png";
-import house from "@/../public/dom.png";
+import engine from "@/../public/turbina.png";
 import pump from "@/../public/ekran_pompy.png";
 import { PanelTypes } from "@/types";
 
@@ -22,7 +22,7 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
       "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Klikając lewym przyciskiem myszy wskaż miejsce, w którym zmieniłbyś / zmieniłabyś poziom wody w zbiorniku.",
     pump: "Poniższy ekran przedstawia wizualizację procesu przepływu cieczy w instalacji przemysłowej, złożonej ze zbiorników, pomp i zaworów sterujących. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić górną pompę wody (Pump 1)?",
     house:
-      "W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby załączyć ogrzewanie w pomieszczeniu?",
+      "Poniższy ekran przedstawia interfejs służący do sterowania turbiną parową w zakładzie przemysłowym. Schemat ilustruje przepływ pary, kluczowe parametry operacyjne takie jak ciśnienie, temperatura i obroty, a także stan zaworów. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić sterowanie turbiną ?",
   };
 
   const nextUrls: Record<PanelTypes, string> = {
@@ -33,7 +33,7 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
 
   const images: Record<PanelTypes, StaticImageData> = {
     "water-tank": zbiornik,
-    house: house,
+    house: engine,
     pump: pump,
   };
 
