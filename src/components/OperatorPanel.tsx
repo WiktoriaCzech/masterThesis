@@ -96,6 +96,7 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
             objectFit: "contain",
           }}
           priority
+          quality={slug === "house" ? 100 : 75}
         />
       </div>
       {slug === "pump" && (
