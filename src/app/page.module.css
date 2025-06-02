@@ -86,6 +86,16 @@
   border: 2px solid rgb(68, 68, 68); 
 }
 
+.info {
+  color: #068d41;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+}
+.overrideH1 {
+  margin-bottom: 0.7rem;
+
+}
+
 @media (max-width: 1440px) {
   .cardWrapper {
     padding: 2rem;

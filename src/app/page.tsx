@@ -8,7 +8,12 @@ export default function Home() {
   return (
     <main className={`${styles.main} ${styles.overrideMain}`}>
       <div className={styles.cardWrapper}>
-        <h1>Dziękuje za wyrażenie chęci udziału w badaniu.</h1>
+        <h1 className={styles.overrideH1}>
+          Dziękuje za wyrażenie chęci udziału w badaniu.
+        </h1>
+        <span className={styles.info}>
+          Czas potrzebny na udzielenie odpowiedzi to około 5 minut.
+        </span>
         <h2>
           Celem badania jest analiza zachowań użytkowników (operatorów) podczas
           obsługi interfejsów wizualizacji procesu w systemach automatyki,
