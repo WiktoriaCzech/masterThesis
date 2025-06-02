@@ -19,7 +19,7 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
 
   const questions: Record<PanelTypes, string> = {
     "water-tank":
-      "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Klikając lewym przyciskiem myszy wskaż miejsce, w którym zmieniłbyś / zmieniłabyś poziom wody w zbiorniku.",
+      "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Kliknij w miejscu, w którym zmieniłbyś / zmieniłabyś poziom wody w zbiorniku.",
     pump: "Poniższy ekran przedstawia wizualizację procesu przepływu cieczy w instalacji przemysłowej, złożonej ze zbiorników, pomp i zaworów sterujących. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić górną pompę wody (Pump 1)?",
     house:
       "Poniższy ekran przedstawia interfejs służący do sterowania turbiną parową w zakładzie przemysłowym. Schemat ilustruje przepływ pary, kluczowe parametry operacyjne takie jak ciśnienie, temperatura i obroty, a także stan zaworów. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić sterowanie turbiną ?",

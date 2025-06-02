@@ -74,3 +74,16 @@ p {
     color-scheme: dark;
   }
 }
+
+@media (max-width: 480px) {  
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+  h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+}

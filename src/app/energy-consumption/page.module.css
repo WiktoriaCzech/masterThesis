@@ -33,3 +33,10 @@
   object-fit: contain;
   position: relative;
 }
+
+@media (max-width: 480px) {
+  .message {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
