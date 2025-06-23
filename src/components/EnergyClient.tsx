@@ -4,11 +4,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Footer from "@/components/footer/Footer";
 import Popup from "@/components/popup/popup";
-import styles from "./page.module.css";
-
+import styles from "./EnergyClient.module.css";
 import monitor from "@/../public/energy_monitor.png";
+import { EnergyTranslation } from "@/types";
 
-export default function Energy() {
+interface EnergyProps {
+  t: EnergyTranslation;
+  lang: "en" | "pl";
+}
+
+export default function EnergyClient({ t, lang }: EnergyProps) {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleClick = () => setShowPopup(true);
@@ -16,17 +21,9 @@ export default function Energy() {
 
   return (
     <main className={styles.main}>
-      <h3 className={styles.message}>
-        Gdzie kliknąłbyś / kliknęłabyś na ekranie, aby uzyskać więcej informacji
-        o stanie zużycia baterii?
-      </h3>
+      <h3 className={styles.message}>{t.question}</h3>
 
-      {showPopup && (
-        <Popup
-          message="Twoja odpowiedź została przesłana."
-          onClose={handleClose}
-        />
-      )}
+      {showPopup && <Popup message={t.popupMessage} onClose={handleClose} />}
 
       <div className={styles.imageGridWrapper}>
         <Image
@@ -35,12 +32,12 @@ export default function Energy() {
           onClick={handleClick}
           src={monitor}
           draggable={false}
-          alt="car energy consumption image panel"
+          alt=""
           priority
         />
       </div>
 
-      <Footer href="/questionare" />
+      <Footer href={`/${lang}/questionare`} />
     </main>
   );
 }

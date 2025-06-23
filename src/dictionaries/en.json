@@ -1,0 +1,106 @@
+{
+    "home": {
+        "thankYouMessage": "Thank you for expressing your willingness to participate in the study.",
+        "timeEstimate": "The time required to complete the questionnaire is approximately 5 minutes.",
+        "studyPurpose": "The aim of the study is to analyze user (operator) behaviors while interacting with process visualization interfaces in automation systems, such as HMI operator panels and SCADA synoptic screens, as well as in transport automation systems, e.g., touch screens in vehicles. The study includes conducting test simulations and visualizations, and its results will be used to formulate design guidelines for creating clear, intuitive, and user-friendly operator interfaces.",
+        "questions": {
+            "ageCategory": "Which age category do you belong to?",
+            "ageOptions": {
+            "18-30": "18 - 30",
+            "30-40": "30 - 40",
+            "40-50": "40 - 50",
+            "50+": "50+"
+            },
+            "gender": "Please specify your gender:",
+            "genderOptions": {
+            "female": "Female",
+            "male": "Male"
+            },
+            "handedness": "Are you right- or left-handed?",
+            "handednessOptions": {
+            "right": "Right-handed",
+            "left": "Left-handed"
+            },
+            "nameOptional": "[Optional]: Enter your first name:"
+        },
+        "privacyTitle": "Privacy Information",
+        "privacyText": "This site uses the Microsoft Clarity tool, which records anonymous data about user interactions such as clicks, page scrolling, and cursor movements. No personal data (e.g., first name, last name, passwords) is collected or stored. The information gathered is used solely for the purposes of this study.",
+        "nextButton": "Next",
+        "locales": {
+            "en": "English",
+            "pl": "Polish"
+        }
+    },
+    "intouch": {
+        "questions": {
+            "water-tank": "The screen below shows a simplified visualization of a heating system with a main tank, pump, valves, and mixing system. Click where you would change the water level in the tank.",
+            "pump": "The screen below shows a liquid flow visualization in an industrial installation composed of tanks, pumps, and control valves. Where would you click on the operator panel below to start the top water pump (Pump 1)?",
+            "house": "The screen below shows an interface for controlling a steam turbine in an industrial plant. The diagram illustrates steam flow, key operational parameters such as pressure, temperature, and RPM, as well as valve status. Where would you click on the operator panel below to engage turbine control?"
+        },
+        "popupMessage": "Your answer has been submitted.",
+        "sourceText": "Source: "
+    },
+    "cars": {
+        "questions": {
+        "step1": "From the four car control panels shown, choose the one you’d feel most comfortable and intuitive using while driving.",
+        "step2": "From the four touch panels shown, choose the one where it would be easiest for you to change the climate control settings.",
+        "step3": "From the four touch panels shown, choose the one where it would be easiest for you to start navigation.",
+        "step4": "From the four panels shown, choose the one where it’s easiest for you to dial a phone number."
+        },
+        "popupMessage": "Your answer has been submitted."
+    },
+    "energy": {
+        "question": "Where would you click on the screen to get more information about the battery consumption status?",
+        "popupMessage": "Your answer has been submitted."
+    },
+    "questionare": {
+        "heading": "Answer the following questions regarding your preferred layout of user interface elements.",
+        "questions": {
+            "rankElements": "In what order (1–6) do you consider the following elements most important? (1 = most important, 6 = least important)",
+            "elements": {
+                "settings": "Settings:",
+                "music": "Music:",
+                "battery": "Battery:",
+                "navigation": "Navigation:",
+                "phone": "Phone:",
+                "ac": "Air Conditioning:"
+            },
+            "layoutPrefer": "Which layout do you prefer for arranging the interface elements?",
+            "layoutOptions": {
+                "horizontal": "Horizontal",
+                "vertical": "Vertical",
+                "grid": "Grid"
+            },
+            "scrollable": "Should the interface elements be scrollable?",
+            "scrollableOptions": {
+                "yes": "Yes",
+                "no": "No"
+            },
+            "scrollDirection": "[Optional] If you think elements should be scrollable – in which direction?",
+            "scrollDirectionOptions": {
+                "vertical": "Vertically",
+                "horizontal": "Horizontally"
+            }
+        }
+    },
+    "interactiveTiles": {
+        "questionPrefix": "Select the position for the element:",
+        "doneMessage": "Placement complete! You can proceed.",
+        "clearButton": "Clear",
+        "labels": {
+        "settings": "Settings",
+        "music": "Music",
+        "battery": "Battery",
+        "navigation": "Navigation",
+        "phone": "Phone",
+        "ac": "Air Conditioning"
+        }
+    },
+     "thankYou": {
+        "title": "✅ Thank you for participating in the study!",
+        "texts": [
+        "Your answers and feedback are extremely valuable to me. They will help in further improving operator interfaces in line with UI/UX principles and in creating more intuitive tools to support the work of automation professionals.",
+        "Thank you for your time and engagement!"
+        ]
+    }
+}

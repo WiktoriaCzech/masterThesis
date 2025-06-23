@@ -1,0 +1,107 @@
+{
+"home": {
+    "thankYouMessage": "Dziękuje za wyrażenie chęci udziału w badaniu.",
+    "timeEstimate": "Czas potrzebny na udzielenie odpowiedzi to około 5 minut.",
+    "studyPurpose": "Celem badania jest analiza zachowań użytkowników (operatorów) podczas obsługi interfejsów wizualizacji procesu w systemach automatyki, takich jak panele operatorskie HMI i ekrany synoptyczne SCADA, a także w systemach automatyki transportowej, np. ekrany dotykowe w pojazdach. Badanie obejmuje przeprowadzenie testowych symulacji i wizualizacji, a jego wyniki posłużą do sformułowania wytycznych projektowych dla budowy przejrzystych, intuicyjnych i przyjaznych interfejsów operatora.",
+    "questions": {
+        "ageCategory": "Do której kategorii wiekowej należysz?",
+        "ageOptions": {
+        "18-30": "18 - 30",
+        "30-40": "30 - 40",
+        "40-50": "40 - 50",
+        "50+": "50+"
+        },
+        "gender": "Określ swoją płeć:",
+        "genderOptions": {
+        "female": "Kobieta",
+        "male": "Mężczyzna"
+        },
+        "handedness": "Czy jesteś osobą prawo- czy leworęczną?",
+        "handednessOptions": {
+        "right": "Praworęczny/a",
+        "left": "Leworęczny/a"
+        },
+        "nameOptional": "[Opcjonalnie]: Podaj swoje imię:"
+    },
+    "privacyTitle": "Informacja o prywatności",
+    "privacyText": "Ta strona korzysta z narzędzia Microsoft Clarity, które rejestruje anonimowe dane dotyczące interakcji użytkowników, takie jak kliknięcia, przewijanie strony czy ruchy kursora. Żadne dane osobowe (np. imię, nazwisko, hasła) nie są gromadzone ani zapisywane. Zebrane informacje służą wyłącznie do przeprowadzenia badania.",
+    "nextButton": "Dalej",
+    "locales": {
+      "en": "Angielski",
+      "pl": "Polski"
+    }
+    },
+    "intouch": {
+         "questions": {
+            "water-tank": "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Kliknij w miejscu, w którym zmieniłbyś / zmieniłabyś poziom wody w zbiorniku.",
+            "pump": "Poniższy ekran przedstawia wizualizację procesu przepływu cieczy w instalacji przemysłowej, złożonej ze zbiorników, pomp i zaworów sterujących. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić górną pompę wody (Pump 1)?",
+            "house": "Poniższy ekran przedstawia interfejs służący do sterowania turbiną parową w zakładzie przemysłowym. Schemat ilustruje przepływ pary, kluczowe parametry operacyjne takie jak ciśnienie, temperatura i obroty, a także stan zaworów. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić sterowanie turbiną ?"
+        },
+        "popupMessage": "Twoja odpowiedź została przesłana.",
+        "sourceText": "Źródło: "
+    },
+    "cars": {
+        "questions": {
+        "step1": "Spośród czterech przedstawionych paneli samochodowych wybierz ten, z którego obsługą czułbyś się najbardziej komfortowo i intuicyjnie podczas jazdy.",
+        "step2": "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci zmienić ustawienia klimatyzacji.",
+        "step3": "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci włączyć nawigację.",
+        "step4": "Spośród czterech paneli wybierz ten, na którym jest Ci najłatwiej wybrać numer telefonu."
+        },
+        "popupMessage": "Twoja odpowiedź została przesłana."
+    },
+    "energy": {
+        "question": "Gdzie kliknąłbyś / kliknęłabyś na ekranie, aby uzyskać więcej informacji o stanie zużycia baterii?",
+        "popupMessage": "Twoja odpowiedź została przesłana."
+    },
+    "questionare": {
+        "heading": "Odpowiedz na poniższe pytania dotyczące preferowanego układu elementów interfejsu użytkownika.",
+        "questions": {
+            "rankElements": "W jakiej kolejności (1–6) uznajesz poniższe elementy za najważniejsze? (1–najważniejsze, 6–najmniej ważne)",
+            "elements": {
+                "settings": "Ustawienia:",
+                "music": "Muzyka:",
+                "battery": "Bateria:",
+                "navigation": "Nawigacja:",
+                "phone": "Telefon:",
+                "ac": "Klimatyzacja:"
+            },
+            "layoutPrefer": "W jakim układzie preferujesz rozmieszczenie elementów interfejsu?",
+            "layoutOptions": {
+                "horizontal": "Poziomym",
+                "vertical": "Pionowym",
+                "grid": "Siatka"
+            },
+            "scrollable": "Czy elementy interfejsu powinny być przewijalne?",
+            "scrollableOptions": {
+                "yes": "Tak",
+                "no": "Nie"
+            },
+            "scrollDirection": "[Opcjonalnie] Jeśli uważasz, że elementy powinny być przewijalne – w którym kierunku?",
+            "scrollDirectionOptions": {
+                "vertical": "W pionie",
+                "horizontal": "W poziomie"
+            }
+        }
+    },
+     "interactiveTiles": {
+        "questionPrefix": "Wybierz położenie elementu:",
+        "doneMessage": "Rozmieszczenie zakończone! Możesz przejść dalej",
+        "clearButton": "Wyczyść",
+        "labels": {
+        "settings": "Ustawienia",
+        "music": "Muzyka",
+        "battery": "Bateria",
+        "navigation": "Nawigacja",
+        "phone": "Telefon",
+        "ac": "Klimatyzacja"
+        }
+    },
+     "thankYou": {
+        "title": "✅ Dziękuję za udział w badaniu!",
+        "texts": [
+        "Twoje odpowiedzi oraz opinie są dla mnie niezwykle cenne. Pomogą w dalszym doskonaleniu interfejsów operatorskich zgodnych z zasadami UI/UX oraz w tworzeniu bardziej intuicyjnych narzędzi wspierających pracę automatyków.",
+        "Dziękuję za poświęcony czas i zaangażowanie!"
+        ]
+    }
+    
+}

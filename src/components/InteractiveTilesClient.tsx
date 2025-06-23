@@ -2,10 +2,16 @@
 
 import { useSearchParams } from "next/navigation";
 import InteractiveGrid from "@/components/InteractiveGrid";
+import { InteractiveTilesTranslation } from "@/types";
+import { Ranks } from "@/types";
 
-export default function InteractiveTilesClient() {
+interface Props {
+  t: InteractiveTilesTranslation;
+}
+
+export default function InteractiveTilesClient({ t }: Props) {
   const params = useSearchParams();
-  const ranks = {
+  const ranks: Ranks = {
     settings: params.get("settings") ?? "",
     music: params.get("music") ?? "",
     battery: params.get("battery") ?? "",
@@ -15,7 +21,7 @@ export default function InteractiveTilesClient() {
   };
 
   const pos =
-    (params.get("pos") as "horizontal" | "vertical" | "grid" | "") ?? "";
+    (params.get("pos") as "horizontal" | "vertical" | "grid" | "") || "";
 
-  return <InteractiveGrid ranks={ranks} pos={pos} />;
+  return <InteractiveGrid ranks={ranks} pos={pos} t={t} />;
 }

@@ -96,6 +96,12 @@
 
 }
 
+.localeSwitcher {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 @media (max-width: 1440px) {
   .cardWrapper {
     padding: 2rem;

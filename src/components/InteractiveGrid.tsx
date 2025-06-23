@@ -3,30 +3,26 @@
 import { useState } from "react";
 import styles from "./InteractiveGrid.module.css";
 import { Ranks } from "@/types";
+import { InteractiveTilesTranslation } from "@/types";
 
 interface Props {
   ranks: Ranks;
   pos: "horizontal" | "vertical" | "grid" | "";
+  t: InteractiveTilesTranslation;
   onComplete?: (placements: Record<number, string[]>) => void;
 }
 
-export default function InteractiveGrid({ ranks, pos, onComplete }: Props) {
-  const polishMap: Record<string, string> = {
-    settings: "Ustawienia",
-    music: "Muzyka",
-    battery: "Bateria",
-    navigation: "Nawigacja",
-    phone: "Telefon",
-    ac: "Klimatyzacja",
-  };
-
-  const orderedElements = Object.entries(ranks)
+export default function InteractiveGrid({ ranks, pos, t, onComplete }: Props) {
+  // cast entries to tuple for correct key type
+  const orderedElements = (
+    Object.entries(ranks) as Array<[keyof Ranks, string]>
+  )
     .sort(([, a], [, b]) => Number(a) - Number(b))
     .map(([key]) => key);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tileAssignments, setTileAssignments] = useState<
-    Record<number, string[]>
+    Record<number, Array<keyof Ranks>>
   >({});
 
   const handleTileClick = (posNum: number) => {
@@ -58,13 +54,13 @@ export default function InteractiveGrid({ ranks, pos, onComplete }: Props) {
       <h3 className={styles.question}>
         {!isDone ? (
           <>
-            Wybierz położenie elementu:&nbsp;
+            {t.questionPrefix}&nbsp;
             <span className={styles.highlight}>
-              {polishMap[orderedElements[currentIndex]]}
+              {t.labels[orderedElements[currentIndex]]}
             </span>
           </>
         ) : (
-          <>Rozmieszczenie zakończone! Możesz przejść dalej</>
+          <> {t.doneMessage} </>
         )}
       </h3>
 
@@ -82,7 +78,7 @@ export default function InteractiveGrid({ ranks, pos, onComplete }: Props) {
               onClick={() => !isDone && handleTileClick(posNum)}
             >
               {assigned.map((key, idx) => (
-                <div key={idx}>{polishMap[key]}</div>
+                <div key={idx}>{t.labels[key]}</div>
               ))}
             </div>
           );
@@ -94,7 +90,7 @@ export default function InteractiveGrid({ ranks, pos, onComplete }: Props) {
         className={styles.clearButton}
         onClick={handleClear}
       >
-        Wyczyść
+        {t.clearButton}
       </button>
     </div>
   );

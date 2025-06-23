@@ -15,31 +15,22 @@ import fordZoom from "@/../public/ford-zoom.png";
 import fordZoomAC from "@/../public/ford-zoom-ac.jpg";
 import tesla from "@/../public/tesla.jpg";
 import tesla3Zoom from "@/../public/Tesla-3-zoom.jpg";
-import { Slug } from "@/types";
+import { CarSelectorTranslation, Slug } from "@/types";
 
 interface CarSelectorProps {
   slug: Slug;
+  t: CarSelectorTranslation;
+  lang: "en" | "pl";
 }
 
-export default function CarSelector({ slug }: CarSelectorProps) {
+export default function CarSelector({ slug, t, lang }: CarSelectorProps) {
   const [showPopup, setShowPopup] = useState(false);
 
-  const questions: Record<Slug, string> = {
-    step1:
-      "Spośród czterech przedstawionych paneli samochodowych wybierz ten, z którego obsługą czułbyś się najbardziej komfortowo i intuicyjnie podczas jazdy.",
-    step2:
-      "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci zmienić ustawienia klimatyzacji.",
-    step3:
-      "Spośród czterech paneli dotykowych wybierz ten, w którym najłatwiej byłoby Ci włączyć nawigację.",
-    step4:
-      "Spośród czterech paneli  wybierz ten, na którym jest ci najłatwiej wybrać numer telefonu. ",
-  };
-
   const nextUrls: Record<Slug, string> = {
-    step1: "/cars/step2",
-    step2: "/cars/step3",
-    step3: "/cars/step4",
-    step4: "/energy-consumption",
+    step1: `/${lang}/cars/step2`,
+    step2: `/${lang}/cars/step3`,
+    step3: `/${lang}/cars/step4`,
+    step4: `/${lang}/energy-consumption`,
   };
 
   const handleClick = () => setShowPopup(true);
@@ -62,39 +53,28 @@ export default function CarSelector({ slug }: CarSelectorProps) {
       break;
   }
 
-  const question = questions[slug];
-  const footerUrl = nextUrls[slug];
-
   return (
     <main className={styles.main}>
-      <h3 className={styles.message}>{question}</h3>
+      <h3 className={styles.message}>{t.questions[slug]}</h3>
 
-      {showPopup && (
-        <Popup
-          message="Twoja odpowiedź została przesłana."
-          onClose={handleClose}
-        />
-      )}
+      {showPopup && <Popup message={t.popupMessage} onClose={handleClose} />}
 
       <div className={styles.imageGridWrapper}>
-        {displays.map((display, index) => (
+        {displays.map((display, idx) => (
           <Image
-            key={index}
+            key={idx}
             className={styles.imageItem}
             onClick={handleClick}
             src={display}
             draggable={false}
             alt=""
-            style={{
-              objectFit: "cover",
-              cursor: "pointer",
-            }}
+            style={{ objectFit: "cover", cursor: "pointer" }}
             priority
           />
         ))}
       </div>
 
-      <Footer href={footerUrl} />
+      <Footer href={nextUrls[slug]} />
     </main>
   );
 }

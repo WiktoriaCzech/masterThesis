@@ -8,27 +8,25 @@ import styles from "./OperatorPanel.module.css";
 import zbiornik from "@/../public/intouch_zbiornik.png";
 import engine from "@/../public/turbina.png";
 import pump from "@/../public/ekran_pompy.png";
-import { PanelTypes } from "@/types";
+import { OperatorPanelTranslation, PanelTypes } from "@/types";
 
 interface OperatorPanelProps {
   slug: PanelTypes;
+  t: OperatorPanelTranslation;
+  currentLocale: "en" | "pl";
 }
 
-export default function OperatorPanel({ slug }: OperatorPanelProps) {
+export default function OperatorPanel({
+  slug,
+  t,
+  currentLocale,
+}: OperatorPanelProps) {
   const [showPopup, setShowPopup] = useState(false);
 
-  const questions: Record<PanelTypes, string> = {
-    "water-tank":
-      "Poniższy ekran przedstawia uproszczoną wizualizację układu grzewczego z głównym zbiornikiem, pompą, zaworami i systemem mieszania. Kliknij w miejscu, w którym zmieniłbyś / zmieniłabyś poziom wody w zbiorniku.",
-    pump: "Poniższy ekran przedstawia wizualizację procesu przepływu cieczy w instalacji przemysłowej, złożonej ze zbiorników, pomp i zaworów sterujących. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić górną pompę wody (Pump 1)?",
-    house:
-      "Poniższy ekran przedstawia interfejs służący do sterowania turbiną parową w zakładzie przemysłowym. Schemat ilustruje przepływ pary, kluczowe parametry operacyjne takie jak ciśnienie, temperatura i obroty, a także stan zaworów. W którym miejscu kliknąłbyś / kliknęłabyś na poniższym panelu operatorskim, aby uruchomić sterowanie turbiną ?",
-  };
-
   const nextUrls: Record<PanelTypes, string> = {
-    "water-tank": "/intouch/pump",
-    pump: "/intouch/house",
-    house: "/cars/step1",
+    "water-tank": `/${currentLocale}/intouch/pump`,
+    pump: `/${currentLocale}/intouch/house`,
+    house: `/${currentLocale}/cars/step1`,
   };
 
   const images: Record<PanelTypes, StaticImageData> = {
@@ -69,23 +67,15 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
   };
   const handleClose = () => setShowPopup(false);
 
-  const question = questions[slug];
-  const footerUrl = nextUrls[slug];
-  const image = images[slug];
-
   return (
     <main className={styles.main}>
-      <h3 className={styles.intouchMessage}>{question}</h3>
-      {showPopup && (
-        <Popup
-          message="Twoja odpowiedź została przesłana."
-          onClose={handleClose}
-        />
-      )}
+      <h3 className={styles.intouchMessage}>{t.questions[slug]}</h3>
+
+      {showPopup && <Popup message={t.popupMessage} onClose={handleClose} />}
 
       <div className={styles.imageWrapper}>
         <Image
-          src={image}
+          src={images[slug]}
           draggable={false}
           onClick={handleClick}
           alt=""
@@ -99,16 +89,15 @@ export default function OperatorPanel({ slug }: OperatorPanelProps) {
           quality={slug === "house" ? 100 : 75}
         />
       </div>
+
       {slug === "pump" && (
         <p className={styles.source}>
-          Źródło:{" "}
-          <a href="https://www.jointjs.com/demos/scada">
-            https://www.jointjs.com/demos/scada
-          </a>
+          {t.sourceText}
+          <a href={t.sourceLink}>{t.sourceLink}</a>
         </p>
       )}
 
-      <Footer href={footerUrl} />
+      <Footer href={nextUrls[slug]} />
     </main>
   );
 }
