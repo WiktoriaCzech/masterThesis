@@ -93,7 +93,9 @@ export default function OperatorPanel({
       {slug === "pump" && (
         <p className={styles.source}>
           {t.sourceText}
-          <a href={t.sourceLink}>{t.sourceLink}</a>
+          <a href="https://www.jointjs.com/demos/scada">
+            https://www.jointjs.com/demos/scada
+          </a>
         </p>
       )}
 
