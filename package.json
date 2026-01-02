@@ -14,7 +14,7 @@
     "@types/negotiator": "^0.6.4",
     "lucide-react": "^0.522.0",
     "negotiator": "^1.0.0",
-    "next": "^15.3.3",
+    "next": "15.3.8",
     "react": "^19.0.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
